@@ -12,5 +12,6 @@ jobs:
       run: docker build ./web-hello -t tomaszbedina/nodejstest:latest
     - name: Push to docker hub
       run: |
+        docker login -u tomaszbedina -p $({secrets.D_TOKEN})
         docker push tomaszbedina/nodejstest:latest
 
