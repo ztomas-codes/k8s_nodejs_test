@@ -1,0 +1,27 @@
+# https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webhello
+  namespace: default
+  labels:
+    app: webhello
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: webhello
+  template:
+    metadata:
+      labels:
+        app: webhello
+    spec:
+      containers:
+      - name: webhello
+        image: tomaszbedina/nodejstest
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 3000

@@ -1,0 +1,15 @@
+# https://kubernetes.io/docs/concepts/services-networking/service/
+apiVersion: v1
+kind: Service
+metadata:
+  name: webhello
+  namespace: default
+spec:
+  selector:
+    app: webhello
+  type: LoadBalancer
+  ports:
+  - name: webhello
+    protocol: TCP
+    port: 80
+    targetPort: 3000
