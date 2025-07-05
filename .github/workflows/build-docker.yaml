@@ -1,0 +1,16 @@
+name: Build and Publish image to Docker Hub 
+
+on:
+  [workflow_dispatch]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build the Docker image
+      run: docker build ./web-hello -t tomaszbedina/nodejstest:latest
+    - name: Push to docker hub
+      run: |
+        docker push tomaszbedina/nodejstest:latest
+
